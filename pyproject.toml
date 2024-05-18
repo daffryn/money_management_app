@@ -5,10 +5,16 @@ description = "money management app kelompok 5"
 authors = [
     {name = "daffryn", email = "ariyanadaffa@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "django>=5.0.6",
+]
 requires-python = ">=3.11"
 readme = "README.md"
 license = {text = "MIT"}
+
+[tool.pdm.scripts]
+dev = "pdm run src/manage.py runserver"
+tw-watch = "bunx tailwindcss -i ./app.css -o ./src/app_landing/static/app_landing/tailwind.css --watch --minify"
 
 [build-system]
 requires = ["pdm-backend"]
