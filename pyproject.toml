@@ -1,0 +1,15 @@
+[project]
+name = "money_management_app"
+version = "0.1.0"
+description = "money management app kelompok 5"
+authors = [
+    {name = "daffryn", email = "ariyanadaffa@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
