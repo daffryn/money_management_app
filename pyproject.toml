@@ -6,9 +6,12 @@ authors = [
     {name = "daffryn", email = "ariyanadaffa@gmail.com"},
 ]
 dependencies = [
-    "django>=5.0.6",
+    "django==5.0.6",
+    "django-environ==0.11.2",
+    "psycopg-binary==3.1.19",
+    "psycopg2-binary==2.9.9",
 ]
-requires-python = ">=3.11"
+requires-python = "==3.11.8"
 readme = "README.md"
 license = {text = "MIT"}
 

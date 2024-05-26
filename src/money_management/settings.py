@@ -10,7 +10,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
+import environ
 from pathlib import Path
+
+# Read Environment
+env = environ.Env(
+    POSTGRES_HOST=(str, "localhost"),
+    POSTGRES_PORT=(str, "5432"),
+    POSTGRES_USER=(str, "postgres"),
+    POSTGRES_PASSWORD=(str, "password"),
+    POSTGRES_DB=(str, "money_management"),
+    SECRET=(str, "django-insecure-3ags!)178^i$^v!e3vbh3yc)$s5#pyqmrmto^=cc9_d=+&&6_@"),
+    DEBUG=(bool, "False"),
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +33,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3ags!)178^i$^v!e3vbh3yc)$s5#pyqmrmto^=cc9_d=+&&6_@'
+SECRET_KEY = env("SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = []
 
@@ -39,6 +52,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app_login',
     'app_landing',
+    'app_dashboard',
+    'app_pocket',
+    'app_transaction',
+    'app_transfer'
 ]
 
 MIDDLEWARE = [
@@ -76,9 +93,13 @@ WSGI_APPLICATION = 'money_management.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("POSTGRES_DB"),
+        "USER": env("POSTGRES_USER"),
+        "PASSWORD": env("POSTGRES_PASSWORD"),
+        "HOST": env("POSTGRES_HOST"),
+        "PORT": env("POSTGRES_PORT")
     }
 }
 
