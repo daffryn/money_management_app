@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                  """)
             ],
             reverse_sql=[
-                ("DROP TABLE IF EXISTS transaction.transactions;"),
+                ("DROP TABLE IF EXISTS transaction.transfers;"),
                 ("DROP EXTENSION IF EXISTS pgcrypto;")
             ]
         )
